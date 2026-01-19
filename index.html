@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask the Holy Book</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="top-bar">
+            <div class="brand">
+                <span class="brand-mark">Ask the Holy Book</span>
+                <span class="brand-sub">AI-guided, scripture-aware answers</span>
+            </div>
+            <div class="top-actions">
+                <button id="about-open" class="ghost-button">About</button>
+            </div>
+        </div>
+        <!-- Selection Screen -->
+        <div id="selection-screen" class="screen active">
+            <div class="hero">
+                <div class="hero-text">
+                    <h1 class="main-title">Ask the <span id="rotating-book">Bible</span></h1>
+                    <p class="subtitle">Know what the sacred texts say, with references and context.</p>
+                    <div class="example-rotator" aria-live="polite">
+                        <span class="example-label">Try asking:</span>
+                        <span id="example-text" class="example-text"></span>
+                        <span class="cursor">|</span>
+                    </div>
+                </div>
+            </div>
+            <p class="subtitle">Choose a book or compare answers side by side.</p>
+            <div class="book-options">
+                <button class="book-option" data-book="bible">
+                    <span class="book-name">Bible</span>
+                </button>
+                <button class="book-option" data-book="quran">
+                    <span class="book-name">Quran</span>
+                </button>
+                <button class="book-option" data-book="torah">
+                    <span class="book-name">Torah</span>
+                </button>
+            </div>
+            <div class="compare-section">
+                <div class="compare-toggle">
+                    <label class="toggle">
+                        <input type="checkbox" id="compare-toggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <span class="toggle-label">Compare answers from Bible, Quran, and Torah</span>
+                </div>
+                <button id="compare-start" class="compare-start" disabled>Start Compare</button>
+            </div>
+            <div class="quick-start">
+                <div class="quick-card">
+                    <h3>Popular questions</h3>
+                    <div class="chip-list">
+                        <button class="chip" data-question="What does the Bible say about forgiveness?">Forgiveness</button>
+                        <button class="chip" data-question="What does the Quran say about justice?">Justice</button>
+                        <button class="chip" data-question="What does the Torah say about compassion?">Compassion</button>
+                        <button class="chip" data-question="Is homosexuality a sin in the Bible?">Homosexuality</button>
+                        <button class="chip" data-question="What does the Quran say about killing innocents?">Violence</button>
+                        <button class="chip" data-question="What does the Torah say about honesty?">Honesty</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Screen -->
+        <div id="chat-screen" class="screen">
+            <div class="chat-header">
+                <button id="back-button" class="back-button">← Back</button>
+                <div class="header-title">
+                    <h2 id="selected-book-title" class="selected-book-title">Ask the Bible</h2>
+                    <span id="mode-badge" class="mode-badge">Single</span>
+                </div>
+            </div>
+            <div id="compare-controls" class="compare-controls hidden">
+                <span class="compare-label">Compare:</span>
+                <label class="pill-checkbox">
+                    <input type="checkbox" value="bible" checked>
+                    <span>Bible</span>
+                </label>
+                <label class="pill-checkbox">
+                    <input type="checkbox" value="quran" checked>
+                    <span>Quran</span>
+                </label>
+                <label class="pill-checkbox">
+                    <input type="checkbox" value="torah" checked>
+                    <span>Torah</span>
+                </label>
+            </div>
+            <div id="chat-messages" class="chat-messages"></div>
+            <div class="chat-input-container">
+                <form id="chat-form" class="chat-form">
+                    <input 
+                        type="text" 
+                        id="message-input" 
+                        class="message-input" 
+                        placeholder="Ask your question..."
+                        autocomplete="off"
+                    >
+                    <button type="submit" id="send-button" class="send-button">Send</button>
+                </form>
+                <div class="input-hint">Press Enter to send</div>
+            </div>
+        </div>
+    </div>
+    <div id="about-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="about-title">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="about-title">About Ask the Holy Book</h2>
+                <button id="about-close" class="ghost-button">Close</button>
+            </div>
+            <div class="modal-body">
+                <p class="about-lead">Ask the Holy Book helps you explore Bible, Quran, and Torah passages with references and respectful interpretation.</p>
+                <div class="about-section">
+                    <h3>How answers are built</h3>
+                    <ul>
+                        <li>We retrieve relevant passages from the selected book.</li>
+                        <li>We summarize and interpret with citations for chapter and verse.</li>
+                        <li>We include modern context and scholarly perspectives when possible.</li>
+                    </ul>
+                </div>
+                <div class="about-section">
+                    <h3>Current events</h3>
+                    <ul>
+                        <li>If web search results are available, we use them and cite sources.</li>
+                        <li>If search isn’t available, we answer from general background knowledge and the texts.</li>
+                        <li>We avoid definitive claims about very recent developments without sources.</li>
+                    </ul>
+                </div>
+                <div class="about-section">
+                    <h3>Compare mode</h3>
+                    <ul>
+                        <li>Ask one question and receive side-by-side answers.</li>
+                        <li>See similarities and differences across traditions.</li>
+                        <li>Toggle books to refine the comparison.</li>
+                    </ul>
+                </div>
+                <div class="about-section">
+                    <h3>Limitations & care</h3>
+                    <ul>
+                        <li>This is informational, not a substitute for clergy or scholarly guidance.</li>
+                        <li>Interpretations can vary by tradition and community.</li>
+                        <li>We aim to be respectful and careful with sensitive topics.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

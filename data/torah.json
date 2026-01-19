@@ -1,0 +1,44 @@
+{
+  "passages": [
+    {
+      "reference": "Exodus 20:13",
+      "text": "You shall not murder.",
+      "context": "The Ten Commandments given at Mount Sinai"
+    },
+    {
+      "reference": "Genesis 9:6",
+      "text": "Whoever sheds the blood of man, by man shall his blood be shed, for God made man in his own image.",
+      "context": "God's covenant with Noah after the flood"
+    },
+    {
+      "reference": "Deuteronomy 19:10",
+      "text": "lest innocent blood be shed in your land that the Lord your God is giving you for an inheritance, and so the guilt of bloodshed be upon you.",
+      "context": "Laws about cities of refuge and protecting the innocent"
+    },
+    {
+      "reference": "Leviticus 19:16",
+      "text": "You shall not go around as a slanderer among your people, and you shall not stand up against the life of your neighbor: I am the Lord.",
+      "context": "Holiness code - laws about how to treat neighbors"
+    },
+    {
+      "reference": "Numbers 35:30",
+      "text": "If anyone kills a person, the murderer shall be put to death on the evidence of witnesses. But no person shall be put to death on the testimony of one witness.",
+      "context": "Laws about murder and the requirement for witnesses"
+    },
+    {
+      "reference": "Deuteronomy 27:25",
+      "text": "'Cursed be anyone who takes a bribe to shed innocent blood.' And all the people shall say, 'Amen.'",
+      "context": "Curses for various sins, including shedding innocent blood"
+    },
+    {
+      "reference": "Leviticus 18:22",
+      "text": "You shall not lie with a male as with a woman; it is an abomination.",
+      "context": "Laws given to the Israelites in Leviticus about sexual relations"
+    },
+    {
+      "reference": "Deuteronomy 6:4-9",
+      "text": "Hear, O Israel: The Lord our God, the Lord is one. You shall love the Lord your God with all your heart and with all your soul and with all your might. And these words that I command you today shall be on your heart.",
+      "context": "The Shema - central prayer and teaching of Judaism"
+    }
+  ]
+}

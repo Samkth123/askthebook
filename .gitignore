@@ -1,0 +1,27 @@
+# Environment variables
+.env
+
+# Node modules
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# RAG cache files
+cache/
+*.embeddings.json
+
+# Data files (holy books - add these if they're large)
+# Uncomment if you want to exclude data files from git
+# data/*.json
