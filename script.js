@@ -53,6 +53,9 @@ let typingForward = true;
 let bookCharIndex = 0;
 let bookTypingForward = true;
 let rotationTimer = null;
+let bookPause = 0;
+let examplePause = 0;
+const pauseTicks = 10;
 
 // Initialize event listeners
 bookOptions.forEach(option => {
@@ -132,12 +135,17 @@ function isSelectionScreenActive() {
 
 function typeBookTitle() {
     if (!rotatingBook || !isSelectionScreenActive()) return;
+    if (bookPause > 0) {
+        bookPause -= 1;
+        return;
+    }
     const current = rotatingBooks[bookIndex];
     if (bookTypingForward) {
         bookCharIndex += 1;
         rotatingBook.textContent = current.slice(0, bookCharIndex);
         if (bookCharIndex >= current.length) {
             bookTypingForward = false;
+            bookPause = pauseTicks;
             return;
         }
     } else {
@@ -146,12 +154,17 @@ function typeBookTitle() {
         if (bookCharIndex <= 0) {
             bookTypingForward = true;
             bookIndex = (bookIndex + 1) % rotatingBooks.length;
+            bookPause = pauseTicks;
         }
     }
 }
 
 function typeExamples() {
     if (!exampleText || !isSelectionScreenActive()) return;
+    if (examplePause > 0) {
+        examplePause -= 1;
+        return;
+    }
 
     const current = exampleQuestions[exampleIndex];
     if (typingForward) {
@@ -159,6 +172,7 @@ function typeExamples() {
         exampleText.textContent = current.slice(0, charIndex);
         if (charIndex >= current.length) {
             typingForward = false;
+            examplePause = pauseTicks;
             return;
         }
     } else {
@@ -167,6 +181,7 @@ function typeExamples() {
         if (charIndex <= 0) {
             typingForward = true;
             exampleIndex = (exampleIndex + 1) % exampleQuestions.length;
+            examplePause = pauseTicks;
         }
     }
 }
