@@ -176,7 +176,7 @@ function startHeroAnimations() {
     rotationTimer = setInterval(() => {
         typeBookTitle();
         typeExamples();
-    }, 140);
+    }, 200);
 }
 
 function stopHeroAnimations() {
