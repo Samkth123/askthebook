@@ -3,148 +3,323 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ask the Holy Book</title>
+    <title>Ask the Holy Book | Qur'an, Bible, Torah Answers with References</title>
+    <meta name="description" content="Ask the Holy Book is a respectful Q&A experience for the Qur'an, Bible, and Torah. Get clear answers with chapter-and-verse references, context, and careful links to current events.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://asktheholybook.com/">
+    <meta property="og:title" content="Ask the Holy Book | Qur'an, Bible, Torah Answers">
+    <meta property="og:description" content="Ask questions and receive scripture-grounded answers with citations, context, and careful current-events framing.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://asktheholybook.com/">
+    <meta property="og:image" content="https://asktheholybook.com/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ask the Holy Book | Qur'an, Bible, Torah Answers">
+    <meta name="twitter:description" content="Scripture-grounded answers with citations, context, and respectful tone.">
+    <meta name="twitter:image" content="https://asktheholybook.com/og-image.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Ask the Holy Book",
+      "url": "https://asktheholybook.com/",
+      "description": "A respectful Q&A experience for the Qur'an, Bible, and Torah with references and context.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://asktheholybook.com/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does Ask the Holy Book choose passages?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We retrieve relevant passages from the selected text and provide citations, then summarize the context in a neutral, respectful tone."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can it address current events?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When sources are available, we separate factual reporting from textual interpretation and cite those sources clearly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this a replacement for clergy or scholars?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. This is informational and encourages consulting scholars or clergy for sensitive questions."
+          }
+        }
+      ]
+    }
+    </script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div class="top-bar">
-            <div class="brand">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="page">
+        <header class="site-header">
+            <a class="brand" href="/">
                 <span class="brand-mark">Ask the Holy Book</span>
-                <span class="brand-sub">AI-guided, scripture-aware answers</span>
+                <span class="brand-sub">Scripture-aware answers with references</span>
+            </a>
+            <nav class="site-nav" aria-label="Primary">
+                <a href="#topics">Topics</a>
+                <a href="#method">Method</a>
+                <a href="/topic/justice.html">Topic page</a>
+                <a href="/question/justice-and-leadership.html">Example question</a>
+            </nav>
+            <div class="nav-actions">
+                <button id="about-open" class="ghost-button" type="button">About</button>
             </div>
-            <div class="top-actions">
-                <button id="about-open" class="ghost-button">About</button>
-            </div>
-        </div>
-        <!-- Selection Screen -->
-        <div id="selection-screen" class="screen active">
-            <div class="hero">
-                <div class="hero-text">
-                    <h1 class="main-title">Ask the <span id="rotating-book">Bible</span></h1>
-                    <p class="subtitle">Know what the sacred texts say, with references and context.</p>
-                    <div class="example-rotator" aria-live="polite">
-                        <span class="example-label">Try asking:</span>
-                        <span id="example-text" class="example-text"></span>
-                        <span class="cursor">|</span>
-                    </div>
-                </div>
-            </div>
-            <p class="subtitle">Choose a book or compare answers side by side.</p>
-            <div class="book-options">
-                <button class="book-option" data-book="bible">
-                    <span class="book-name">Bible</span>
-                </button>
-                <button class="book-option" data-book="quran">
-                    <span class="book-name">Quran</span>
-                </button>
-                <button class="book-option" data-book="torah">
-                    <span class="book-name">Torah</span>
-                </button>
-            </div>
-            <div class="compare-section">
-                <div class="compare-toggle">
-                    <label class="toggle">
-                        <input type="checkbox" id="compare-toggle">
-                        <span class="toggle-slider"></span>
-                    </label>
-                    <span class="toggle-label">Compare answers from Bible, Quran, and Torah</span>
-                </div>
-                <button id="compare-start" class="compare-start" disabled>Start Compare</button>
-            </div>
-            <div class="quick-start">
-                <div class="quick-card">
-                    <h3>Popular questions</h3>
-                    <div class="chip-list">
-                        <button class="chip" data-question="What does the Bible say about forgiveness?">Forgiveness</button>
-                        <button class="chip" data-question="What does the Quran say about justice?">Justice</button>
-                        <button class="chip" data-question="What does the Torah say about compassion?">Compassion</button>
-                        <button class="chip" data-question="Is homosexuality a sin in the Bible?">Homosexuality</button>
-                        <button class="chip" data-question="What does the Quran say about killing innocents?">Violence</button>
-                        <button class="chip" data-question="What does the Torah say about honesty?">Honesty</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </header>
 
-        <!-- Chat Screen -->
-        <div id="chat-screen" class="screen">
-            <div class="chat-header">
-                <button id="back-button" class="back-button">← Back</button>
-                <div class="header-title">
-                    <h2 id="selected-book-title" class="selected-book-title">Ask the Bible</h2>
-                    <span id="mode-badge" class="mode-badge">Single</span>
+        <main id="main" class="site-main">
+            <section id="selection-screen" class="screen active" aria-labelledby="hero-title">
+                <div class="hero">
+                    <div class="hero-content">
+                        <p class="eyebrow">Qur'an • Bible • Torah</p>
+                        <h1 id="hero-title">Ask the Qur'an, Bible, and Torah—clearly, respectfully, with references.</h1>
+                        <p class="lead">Explore difficult questions with citations, context, and a calm, scholarly approach. When a question touches current events, we separate scripture principles, verified facts, and the bridge between them.</p>
+                        <form id="home-ask-form" class="ask-form" aria-label="Ask a question">
+                            <label class="field-label" for="home-question-input">Your question</label>
+                            <div class="ask-input-row">
+                                <input id="home-question-input" type="text" placeholder="Ask about justice, leadership, forgiveness, or current events..." autocomplete="off">
+                                <button class="primary-button" type="submit">Ask</button>
+                            </div>
+                            <fieldset class="source-selector" aria-label="Choose a source">
+                                <legend>Choose a source to start</legend>
+                                <label class="source-pill">
+                                    <input class="source-input" type="radio" name="source" value="quran">
+                                    <span>Qur'an</span>
+                                </label>
+                                <label class="source-pill">
+                                    <input class="source-input" type="radio" name="source" value="bible">
+                                    <span>Bible</span>
+                                </label>
+                                <label class="source-pill">
+                                    <input class="source-input" type="radio" name="source" value="torah">
+                                    <span>Torah</span>
+                                </label>
+                            </fieldset>
+                        </form>
+                        <div class="chip-group" aria-label="Example prompts">
+                            <span class="chip-label">Try:</span>
+                            <button class="chip" data-question="What does the Qur'an say about justice and oppression?">Justice and oppression</button>
+                            <button class="chip" data-question="What does the Bible teach about forgiveness after conflict?">Forgiveness after conflict</button>
+                            <button class="chip" data-question="How do these texts approach leadership and accountability?">Leadership and accountability</button>
+                            <button class="chip" data-question="How might these texts frame current conflicts without endorsing harm?">Current conflicts, carefully</button>
+                        </div>
+                    </div>
+                    <aside class="hero-aside" aria-label="Method and tone">
+                        <div class="aside-card">
+                            <h2>Method & tone</h2>
+                            <ul>
+                                <li>Text-first retrieval with chapter-and-verse citations.</li>
+                                <li>Neutral summaries and interpretive notes.</li>
+                                <li>Clear separation of scripture, facts, and modern framing.</li>
+                            </ul>
+                        </div>
+                        <div class="aside-card">
+                            <h2>Respectful approach</h2>
+                            <p>We avoid sensational language and encourage consultation with scholars or clergy for sensitive matters.</p>
+                        </div>
+                    </aside>
                 </div>
+
+                <section class="editorial" aria-labelledby="how-title">
+                    <div class="reading">
+                        <h2 id="how-title">How it works</h2>
+                        <ol class="step-list">
+                            <li>Ask a question in your own words.</li>
+                            <li>Select the sources you want to consult.</li>
+                            <li>Receive a grounded answer with citations, context, and relevant passages.</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <section class="editorial" aria-labelledby="featured-title">
+                    <div class="reading">
+                        <h2 id="featured-title">Featured questions</h2>
+                        <p>Curated, indexable explorations for deeper reading.</p>
+                        <div class="link-list">
+                            <a href="/question/justice-and-leadership.html">How do the Qur'an, Bible, and Torah frame justice in leadership?</a>
+                            <a href="/question/forgiveness-after-conflict.html">What do the scriptures teach about forgiveness after conflict?</a>
+                            <a href="/question/wealth-and-responsibility.html">How do the texts speak about wealth, responsibility, and care for the vulnerable?</a>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="topics" class="editorial" aria-labelledby="topics-title">
+                    <div class="reading">
+                        <h2 id="topics-title">Topics</h2>
+                        <p>Browse topic hubs that summarize how each text approaches a theme.</p>
+                        <div class="topic-grid">
+                            <a class="topic-card" href="/topic/justice.html">Justice</a>
+                            <a class="topic-card" href="/topic/leadership.html">Leadership</a>
+                            <a class="topic-card" href="/topic/peace-conflict.html">Peace & conflict</a>
+                            <a class="topic-card" href="/topic/relationships.html">Relationships</a>
+                            <a class="topic-card" href="/topic/wealth.html">Wealth & generosity</a>
+                            <a class="topic-card" href="/topic/suffering.html">Suffering & hope</a>
+                            <a class="topic-card" href="/topic/prayer.html">Prayer</a>
+                            <a class="topic-card" href="/topic/ethics.html">Ethics</a>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="method" class="editorial" aria-labelledby="method-title">
+                    <div class="reading">
+                        <h2 id="method-title">Method & sources</h2>
+                        <p>Answers are built by retrieving passages from the selected scripture, then summarizing their meaning with citations. When current events are involved, we explicitly separate:</p>
+                        <div class="callout">
+                            <p><strong>Textual principles</strong> (timeless teachings and moral frameworks)</p>
+                            <p><strong>Current facts</strong> (with sources when available)</p>
+                            <p><strong>Bridge</strong> (careful, transparent mapping to the present)</p>
+                        </div>
+                        <p>We aim for clarity, neutrality, and respect across traditions.</p>
+                    </div>
+                </section>
+
+                <section class="editorial" aria-labelledby="faq-title">
+                    <div class="reading">
+                        <h2 id="faq-title">Frequently asked questions</h2>
+                        <div class="faq-list">
+                            <details>
+                                <summary>How are citations provided?</summary>
+                                <p>We reference chapter and verse for each passage used, and surface relevant quotes in a dedicated passages panel.</p>
+                            </details>
+                            <details>
+                                <summary>How do you handle current events?</summary>
+                                <p>We separate scripture principles, factual reporting with sources, and the interpretive bridge between them.</p>
+                            </details>
+                            <details>
+                                <summary>Can I compare multiple sources?</summary>
+                                <p>Yes. Select multiple texts to receive side-by-side answers with shared citations.</p>
+                            </details>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <section id="chat-screen" class="screen" aria-labelledby="chat-title">
+                <div class="chat-shell">
+                    <header class="chat-header">
+                        <button id="back-button" class="back-button" type="button">← Back</button>
+                        <div class="header-title">
+                            <h2 id="chat-title" class="selected-book-title">Ask the Holy Book</h2>
+                            <span id="mode-badge" class="mode-badge">Single</span>
+                        </div>
+                    </header>
+
+                    <div class="chat-layout">
+                        <article class="chat-main">
+                            <div id="compare-controls" class="compare-controls hidden">
+                                <span class="compare-label">Sources:</span>
+                                <label class="pill-checkbox">
+                                    <input type="checkbox" value="quran" checked>
+                                    <span>Qur'an</span>
+                                </label>
+                                <label class="pill-checkbox">
+                                    <input type="checkbox" value="bible" checked>
+                                    <span>Bible</span>
+                                </label>
+                                <label class="pill-checkbox">
+                                    <input type="checkbox" value="torah" checked>
+                                    <span>Torah</span>
+                                </label>
+                            </div>
+                            <div id="chat-messages" class="chat-messages"></div>
+                            <div class="chat-input-container">
+                                <form id="chat-form" class="chat-form">
+                                    <input
+                                        type="text"
+                                        id="message-input"
+                                        class="message-input"
+                                        placeholder="Ask your question..."
+                                        autocomplete="off"
+                                    >
+                                    <button type="submit" id="send-button" class="send-button">Send</button>
+                                </form>
+                                <div class="input-hint">Press Enter to send</div>
+                            </div>
+                        </article>
+                        <aside class="chat-rail" aria-label="Context and sources">
+                            <div class="rail-card">
+                                <h3>Context panel</h3>
+                                <p>Relevant passages and interpretive notes appear here when available.</p>
+                            </div>
+                            <div class="rail-card">
+                                <h3>Current events</h3>
+                                <p>When sources are available, we list citations and separate facts from interpretation.</p>
+                            </div>
+                            <div class="rail-card">
+                                <h3>Related questions</h3>
+                                <div class="link-list">
+                                    <a href="/question/justice-and-leadership.html">Justice in leadership</a>
+                                    <a href="/question/forgiveness-after-conflict.html">Forgiveness after conflict</a>
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div>
+                <p>Ask the Holy Book provides informational summaries with citations. Answers are well-trained and tested, but may be incorrect—please double-check sources.</p>
+                <p class="muted">© 2026 Ask the Holy Book</p>
             </div>
-            <div id="compare-controls" class="compare-controls hidden">
-                <span class="compare-label">Compare:</span>
-                <label class="pill-checkbox">
-                    <input type="checkbox" value="bible" checked>
-                    <span>Bible</span>
-                </label>
-                <label class="pill-checkbox">
-                    <input type="checkbox" value="quran" checked>
-                    <span>Quran</span>
-                </label>
-                <label class="pill-checkbox">
-                    <input type="checkbox" value="torah" checked>
-                    <span>Torah</span>
-                </label>
+            <div class="footer-links">
+                <a href="#method">Methodology</a>
+                <a href="#topics">Topics</a>
+                <a href="/topic/justice.html">Topic example</a>
             </div>
-            <div id="chat-messages" class="chat-messages"></div>
-            <div class="chat-input-container">
-                <form id="chat-form" class="chat-form">
-                    <input 
-                        type="text" 
-                        id="message-input" 
-                        class="message-input" 
-                        placeholder="Ask your question..."
-                        autocomplete="off"
-                    >
-                    <button type="submit" id="send-button" class="send-button">Send</button>
-                </form>
-                <div class="input-hint">Press Enter to send</div>
-            </div>
-        </div>
+        </footer>
     </div>
+
     <div id="about-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="about-title">
         <div class="modal-content">
             <div class="modal-header">
                 <h2 id="about-title">About Ask the Holy Book</h2>
-                <button id="about-close" class="ghost-button">Close</button>
+                <button id="about-close" class="ghost-button" type="button">Close</button>
             </div>
             <div class="modal-body">
-                <p class="about-lead">Ask the Holy Book helps you explore Bible, Quran, and Torah passages with references and respectful interpretation.</p>
+                <p class="about-lead">Ask the Holy Book helps you explore the Qur'an, Bible, and Torah with references and careful context.</p>
                 <div class="about-section">
-                    <h3>How answers are built</h3>
+                    <h3>What we provide</h3>
                     <ul>
-                        <li>We retrieve relevant passages from the selected book.</li>
-                        <li>We summarize and interpret with citations for chapter and verse.</li>
-                        <li>We include modern context and scholarly perspectives when possible.</li>
+                        <li>Clear answers grounded in passages from the selected text.</li>
+                        <li>Citations for chapter and verse.</li>
+                        <li>Context and interpretive notes, written respectfully.</li>
                     </ul>
                 </div>
                 <div class="about-section">
                     <h3>Current events</h3>
                     <ul>
-                        <li>If web search results are available, we use them and cite sources.</li>
-                        <li>If search isn’t available, we answer from general background knowledge and the texts.</li>
-                        <li>We avoid definitive claims about very recent developments without sources.</li>
-                    </ul>
-                </div>
-                <div class="about-section">
-                    <h3>Compare mode</h3>
-                    <ul>
-                        <li>Ask one question and receive side-by-side answers.</li>
-                        <li>See similarities and differences across traditions.</li>
-                        <li>Toggle books to refine the comparison.</li>
+                        <li>We separate textual principles, factual reporting, and interpretive bridges.</li>
+                        <li>We cite sources when reporting current events.</li>
+                        <li>We avoid definitive claims without sources.</li>
                     </ul>
                 </div>
                 <div class="about-section">
                     <h3>Limitations & care</h3>
                     <ul>
                         <li>This is informational, not a substitute for clergy or scholarly guidance.</li>
-                        <li>Interpretations can vary by tradition and community.</li>
-                        <li>We aim to be respectful and careful with sensitive topics.</li>
+                        <li>Interpretations vary by tradition and community.</li>
+                        <li>We aim to be careful with sensitive topics.</li>
                     </ul>
                 </div>
             </div>
