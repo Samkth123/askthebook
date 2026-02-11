@@ -16,26 +16,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('.')); // Serve static files (HTML, CSS, JS)
 
-// Health check endpoint for hosting diagnostics
-app.get('/api/health', (req, res) => {
-    const dataDir = require('path').join(__dirname, 'data');
-    const fs = require('fs');
-    const dataFiles = ['bible.json', 'quran.json', 'torah.json'];
-    const dataStatus = dataFiles.reduce((acc, file) => {
-        acc[file] = fs.existsSync(require('path').join(dataDir, file));
-        return acc;
-    }, {});
-
-    res.json({
-        status: 'ok',
-        openaiConfigured: Boolean(process.env.OPENAI_API_KEY),
-        ragInitialized: Boolean(ragSystem),
-        dataFiles: dataStatus,
-        webSearchMode: (process.env.WEB_SEARCH_MODE || 'always').toLowerCase(),
-        model: process.env.OPENAI_MODEL || 'gpt-4o-mini'
-    });
-});
-
 // Initialize OpenAI client
 let openai;
 if (process.env.OPENAI_API_KEY) {
