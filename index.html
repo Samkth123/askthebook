@@ -188,18 +188,19 @@
                                 <input id="home-question-input" type="text" placeholder="Ask about justice, leadership, forgiveness, or current events..." autocomplete="off">
                                 <button class="primary-button" type="submit">Ask</button>
                             </div>
-                            <fieldset class="source-selector" aria-label="Choose a source">
-                                <legend>Choose a source to start</legend>
+                            <fieldset class="source-selector" aria-label="Choose sources">
+                                <legend>Choose one or more sources</legend>
+                                <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 12px;">Select one source for a single answer, or multiple sources to compare answers side by side.</p>
                                 <label class="source-pill">
-                                    <input class="source-input" type="radio" name="source" value="quran">
+                                    <input class="source-input" type="checkbox" name="source" value="quran">
                                     <span>Qur'an</span>
                                 </label>
                                 <label class="source-pill">
-                                    <input class="source-input" type="radio" name="source" value="bible">
+                                    <input class="source-input" type="checkbox" name="source" value="bible">
                                     <span>Bible</span>
                                 </label>
                                 <label class="source-pill">
-                                    <input class="source-input" type="radio" name="source" value="torah">
+                                    <input class="source-input" type="checkbox" name="source" value="torah">
                                     <span>Torah</span>
                                 </label>
                             </fieldset>

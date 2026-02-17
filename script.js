@@ -30,7 +30,7 @@ if (selectionScreen && chatScreen) {
     const modeBadge = document.getElementById('mode-badge');
     const homeAskForm = document.getElementById('home-ask-form');
     const homeQuestionInput = document.getElementById('home-question-input');
-    const sourceInputs = document.querySelectorAll('.source-input[name="source"]');
+    const sourceInputs = document.querySelectorAll('.source-input[type="checkbox"][name="source"]');
     const quickChips = document.querySelectorAll('.chip[data-question]');
     const aboutOpen = document.getElementById('about-open');
     const aboutClose = document.getElementById('about-close');
@@ -59,6 +59,28 @@ if (selectionScreen && chatScreen) {
             } else {
                 state.compareBooks.delete(input.value);
             }
+            
+            // Update mode if we're in compare mode
+            if (state.isCompareMode) {
+                if (state.compareBooks.size === 0) {
+                    alert('Select at least one source to compare.');
+                    input.checked = true;
+                    state.compareBooks.add(input.value);
+                } else if (state.compareBooks.size === 1) {
+                    // Switch to single mode
+                    state.isCompareMode = false;
+                    state.selectedBook = Array.from(state.compareBooks)[0];
+                    selectedBookTitle.textContent = `Ask the ${bookNames[state.selectedBook]}`;
+                    modeBadge.textContent = 'Single';
+                    compareControls.classList.add('hidden');
+                } else {
+                    // Stay in compare mode
+                    state.isCompareMode = true;
+                    state.selectedBook = null;
+                    selectedBookTitle.textContent = 'Compare Answers';
+                    modeBadge.textContent = 'Compare';
+                }
+            }
         });
     });
 
@@ -73,15 +95,26 @@ if (selectionScreen && chatScreen) {
     if (homeAskForm) {
         homeAskForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const selectedSource = Array.from(sourceInputs).find(input => input.checked);
-            if (!selectedSource) {
-                alert('Please select a source to start.');
+            const selectedSources = Array.from(sourceInputs)
+                .filter(input => input.checked)
+                .map(input => input.value);
+
+            if (selectedSources.length === 0) {
+                alert('Please select at least one source.');
                 return;
             }
 
-            state.compareBooks = new Set([selectedSource.value]);
-            state.isCompareMode = false;
-            state.selectedBook = selectedSource.value;
+            if (selectedSources.length === 1) {
+                // Single source mode
+                state.compareBooks = new Set(selectedSources);
+                state.isCompareMode = false;
+                state.selectedBook = selectedSources[0];
+            } else {
+                // Compare mode
+                state.compareBooks = new Set(selectedSources);
+                state.isCompareMode = true;
+                state.selectedBook = null;
+            }
 
             const message = homeQuestionInput.value.trim();
             showChatScreen();
